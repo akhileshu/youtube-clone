@@ -1,0 +1,56 @@
+{
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "build/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/auth",
+      "dest": "server.js"
+    },
+    {
+      "src": "/auth/(.+)",
+      "dest": "server.js"
+    },
+
+    {
+      "src": "/user",
+      "dest": "server.js"
+    },
+    {
+      "src": "/user/(.+)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/video",
+      "dest": "server.js"
+    },
+    {
+      "src": "/video/(.+)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/comment",
+      "dest": "server.js"
+    },
+    {
+      "src": "/comment/(.+)",
+      "dest": "server.js"
+    },
+
+    {
+      "src": "/",
+      "dest": "build/index.html"
+    },
+    {
+      "src": "/(.+)",
+      "dest": "build/$1"
+    }
+  ]
+}
