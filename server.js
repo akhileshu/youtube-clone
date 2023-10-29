@@ -8,23 +8,25 @@ import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comment.js";
 import userRoutes from "./routes/user.js";
 import videoRoutes from "./routes/video.js";
-// db
-import "./config/db.js";
+
 
 // for using path
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import { connectToDb } from "./config/db.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Now you can use __dirname as you normally would in CommonJS modules.
-
+// db
+// import "./config/db.js";
+connectToDb(); //you are now connected to db
 
 
 const app = express();
 // server build folder
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.resolve(__dirname, "build")));
 app.use(express.json());
 // Enable extended URL-encoded data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -51,7 +53,7 @@ app.use("/comment", commentRoutes);
 
 app.get("*", (req, res) => {
   // incase user reloads page
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 // error handler
 app.use(errorHandler);
