@@ -42,8 +42,14 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(express.json());
 // Enable extended URL-encoded data parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(cors(corsOptions)); //diable when proxy is set in dev mode
-// Allow requests from a specific origin (e.g., your Vercel-hosted frontend)
+// Allow requests from any origin
+app.use(
+  cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true, // Enable cookies and other credentials
+  })
+);// Allow requests from a specific origin (e.g., your Vercel-hosted frontend)
 // app.use(cors({
 //   origin: 'https://your-vercel-app.vercel.app',
 // }));
