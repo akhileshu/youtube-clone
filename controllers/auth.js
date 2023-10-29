@@ -46,7 +46,11 @@ export const signin = async (req, res, next) => {
 
     if (!isCorrect) return next(createError(400, "Wrong Credentials!"));
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT);
+    // const token = jwt.sign({ id: user._id }, process.env.JWT);
+    // Create a JWT with a one-week expiration time
+    const token = jwt.sign({ id: user._id }, process.env.JWT, {
+      expiresIn: "1w", // 1 week
+    });
     const { password: pw, ...others } = user._doc; //todo:fix
 
     res
