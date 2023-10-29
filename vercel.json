@@ -43,6 +43,10 @@
       "dest": "server.js"
     },
     {
+      "src": "/lol",
+      "dest": "build/index.html"
+    },
+    {
       "src": "/",
       "dest": "build/index.html"
     },
