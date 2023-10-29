@@ -43,12 +43,16 @@
       "dest": "server.js"
     },
     {
-      "src": "/lol",
+      "src": "/",
       "dest": "build/index.html"
     },
     {
-      "src": "/",
+      "src": "/(.*)",
       "dest": "build/index.html"
+    },
+    {
+      "src": "/(.+)",
+      "dest": "build/$1"
     },
     {
       "src": "/.*",
