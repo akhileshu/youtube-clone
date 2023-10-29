@@ -31,7 +31,7 @@ export const signup = async (req, res, next) => {
     const obj = { message: "your account has been created!" };
     res.status(200).json(obj);
   } catch (err) {
-    console.log(17, err.message);
+    // console.log(17, err.message);
     next(err);
   }
 };
