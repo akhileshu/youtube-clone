@@ -10,6 +10,7 @@ console.log(token)
       console.error("JWT Verification Error:", err);
       return next(createError(403, "Token expired or not valid"));
     }
+    // user- id
     req.user = userId;
     next();
   });
